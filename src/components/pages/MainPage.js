@@ -1,7 +1,7 @@
 import React from 'react'
-import * as BooksAPI from '../../BooksAPI'
 import { Link } from 'react-router-dom'
 import Shelf from '../Shelf'
+import * as BooksAPI from '../../BooksAPI'
 
 class MainPage extends React.Component {
 
@@ -12,14 +12,26 @@ class MainPage extends React.Component {
       books : []
     }
   }
-//to load all the books that we are currentlyReading
+
+//to load the books from the backEnd API
   componentDidMount() {
     BooksAPI.getAll()
     .then(resp => {
-    console.log(resp);
-    this.setState({books:resp});
+    this.setState({books: resp});
     });
   }
+
+// to update book status
+  updateBook = (book, shelf) => {
+  BooksAPI.update(book, shelf)
+  .then(resp => {
+    book.shelf = shelf;
+    this.setState(state => ({
+      books: state.books.filter(b => b.id !== book.id).concat([book])
+    }));
+  });
+  }
+
  render() {
    return (
      <div className="list-books">
@@ -28,9 +40,9 @@ class MainPage extends React.Component {
        </div>
        <div className="list-books-content">
          <div>
-          <Shelf name="Curently Reading" books={this.state.books.filter(b => b.Shelf === "currentlyReading")} />
-          <Shelf name="Want To Read" books={this.state.books.filter(b => b.Shelf === "wantToRead")} />
-          <Shelf name="Read" books={this.state.books.filter(b => b.Shelf === "read")} />
+          <Shelf updateBook={this.updateBook} name="Curently Reading" books={this.state.books.filter(b => b.shelf === "currentlyReading")} />
+          <Shelf updateBook={this.updateBook} name="Want To Read" books={this.state.books.filter(b => b.shelf === "wantToRead")} />
+          <Shelf updateBook={this.updateBook} name="Read" books={this.state.books.filter(b => b.shelf === "read")} />
         </div>
        </div>
        <div className="open-search">

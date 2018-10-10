@@ -5,7 +5,7 @@ import './index.css'
 
 import { BrowserRouter } from 'react-router-dom'
 
-// this will allow to use route components inside BrowserRouter
+// this will allow to use App components inside BrowserRouter
 ReactDOM.render(
   <BrowserRouter>
     <App />
