@@ -3,7 +3,7 @@ Udacity Front End Web Developer Nanodegree , project 6
 ---
 ## Overview:
 Udacity provided scholars with initial code and they have to make the app works,
-the mean idea is to search for books and orgnize them with specific shelf.
+the mean idea is to search for books and orgnize them with a specific shelf.
 This application created with React ,it demonstrates the understanding of
 props, states, Components,APIs. 
 
@@ -11,7 +11,8 @@ props, states, Components,APIs.
 
 - make sure you have Node.js and npm installed, or get them [here](https://nodejs.org/it/download).
 - Once node.js is installed, install the react package using this command: `npm install -g create-react-app`.
-- install [yarn](https://yarnpkg.com/en/docs/install)
+- install [yarn](https://yarnpkg.com/en/docs/install).
+
 Now the environment is ready, go ahead and 
 - Clone or install the project to your local machine.
 - unzip the installed folder.
